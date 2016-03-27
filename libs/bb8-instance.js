@@ -4,7 +4,9 @@ var sphero = require("sphero"),
 module.exports = function() {
   
   if(typeof(config.BB8_UUID) !== 'undefined') {
-    return sphero(config.BB8_UUID);
+  	var bb8 = sphero(config.BB8_UUID);
+  	bb8.intervals = [];
+    return bb8;
   }
 
   return false;

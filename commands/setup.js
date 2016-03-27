@@ -20,8 +20,6 @@ module.exports = function() {
 
         if(_.includes(peripheral.advertisement.localName, 'BB-')) {
 
-            console.log(peripheral);
-
             var deviceUUID = peripheral.uuid,
             localName = peripheral.advertisement.localName;
 

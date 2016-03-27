@@ -1,3 +1,8 @@
+var mqtt = require("mqtt");
+// Connecting to MQTT broker
+var mqttBroker = mqtt.connect("mqtt:test.mosquitto.org");
+var brokeOutput = "flow-bb8-input";
+
 module.exports = function (bb8) {
 
     console.log('Getting battery Info');
@@ -17,6 +22,7 @@ module.exports = function (bb8) {
         console.log("Battery Volatage: ", data.batteryVoltage);
         console.log("Charge Count:     ", data.chargeCount);
         console.log("Time Since Charge:", Math.floor(data.secondsSinceCharge / 60) +" minutes");
+        mqttBroker.publish(brokeOutput, JSON.stringify(data));
       }
     });
 };

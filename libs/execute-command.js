@@ -3,8 +3,10 @@ var bb8 = require('./bb8-instance')(),
     _ = require('lodash');
 
 module.exports = function (command, options) {
+
   if (bb8) {
     bb8.connect(function () {
+      console.log("connected...")
       require(appRootPath + '/commands/' + command)(bb8, options);
     });
   }
